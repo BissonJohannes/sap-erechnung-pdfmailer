@@ -2,7 +2,7 @@ name: Release skill
 
 # Läuft, sobald auf GitHub ein Release veröffentlicht wird
 # (Releases > Draft a new release > Tag z. B. v1.0.0 > Publish release).
-# Baut das Skill-ZIP und hängt es mit der Anleitung an das Release.
+# Baut das Skill-ZIP und hängt es mit Anleitung und Erklärvideo an das Release.
 
 on:
   release:
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ env.TAG }}
+          ref: ${{ github.event.release.tag_name || github.ref }}
 
       - name: Build skill ZIP
         run: |
@@ -40,4 +40,5 @@ jobs:
           gh release upload "$TAG" \
             sap-erechnung-pdfmailer.zip \
             docs/Skill-Anleitung.pdf \
+            docs/Erklaervideo.mp4 \
             --clobber

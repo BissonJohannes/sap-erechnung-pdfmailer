@@ -47,6 +47,8 @@ Schreib die ABAP-Klasse, die die Steuerzeichen im Druckprogramm aufbaut, für EC
 PDFMAILER meldet BR-DE-15. Hier sind meine Steuerzeichen, was fehlt?
 ```
 
+Erklärvideo (30 Sekunden): [docs/Erklaervideo.mp4](docs/Erklaervideo.mp4)
+
 Die ausführliche Anleitung mit Workflow, Prüfregeln und typischen Fehlern: [docs/Skill-Anleitung.pdf](docs/Skill-Anleitung.pdf).
 
 ## Inhalt des Repositorys
@@ -58,6 +60,7 @@ Die ausführliche Anleitung mit Workflow, Prüfregeln und typischen Fehlern: [do
 | `skill/sap-erechnung-pdfmailer/references/abap-beispiel.md` | ABAP-Klasse für das Druckprogramm |
 | `skill/sap-erechnung-pdfmailer/examples/` | Steuerzeichen einer vollständigen Beispielrechnung |
 | `docs/Skill-Anleitung.pdf` | Anleitung für Anwender |
+| `docs/Erklaervideo.mp4` | Erklärvideo, 30 Sekunden |
 | `examples/Testrechnung_90012345.pdf` | Testrechnung mit eingebetteten Steuerzeichen für einen Druck über PDFMAILER |
 | `examples/Steuerzeichen_Testrechnung_90012345.txt` | dieselben Steuerzeichen zum Abgleich |
 | `.github/workflows/release.yml` | baut beim Veröffentlichen eines Releases das Skill-ZIP und hängt es an |
@@ -82,7 +85,7 @@ Alle Daten in den Beispielen sind fiktiv.
 2. Einen neuen Tag anlegen (z. B. `v1.0.1`), Titel und Text aus `CHANGELOG.md` übernehmen.
 3. **Publish release** klicken.
 
-Der Workflow packt dann `skill/sap-erechnung-pdfmailer/` als ZIP und hängt es zusammen mit der Anleitung an das Release.
+Der Workflow packt dann `skill/sap-erechnung-pdfmailer/` als ZIP und hängt es zusammen mit Anleitung und Erklärvideo an das Release.
 
 ## Lizenz
 
