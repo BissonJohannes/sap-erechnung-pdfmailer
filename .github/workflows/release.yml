@@ -1,18 +1,30 @@
 name: Release skill
 
+# Läuft, sobald auf GitHub ein Release veröffentlicht wird
+# (Releases > Draft a new release > Tag z. B. v1.0.0 > Publish release).
+# Baut das Skill-ZIP und hängt es mit der Anleitung an das Release.
+
 on:
-  push:
-    tags:
-      - "v*"
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag eines bestehenden Releases, an das die Dateien gehängt werden"
+        required: true
 
 permissions:
   contents: write
 
 jobs:
-  release:
+  attach:
     runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
 
       - name: Build skill ZIP
         run: |
@@ -21,12 +33,11 @@ jobs:
           cd ..
           unzip -l sap-erechnung-pdfmailer.zip
 
-      - name: Create release
+      - name: Attach files to release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${GITHUB_REF_NAME}" \
+          gh release upload "$TAG" \
             sap-erechnung-pdfmailer.zip \
             docs/Skill-Anleitung.pdf \
-            --title "${GITHUB_REF_NAME}" \
-            --notes-file CHANGELOG.md
+            --clobber

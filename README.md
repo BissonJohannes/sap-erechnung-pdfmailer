@@ -60,7 +60,7 @@ Die ausführliche Anleitung mit Workflow, Prüfregeln und typischen Fehlern: [do
 | `docs/Skill-Anleitung.pdf` | Anleitung für Anwender |
 | `examples/Testrechnung_90012345.pdf` | Testrechnung mit eingebetteten Steuerzeichen für einen Druck über PDFMAILER |
 | `examples/Steuerzeichen_Testrechnung_90012345.txt` | dieselben Steuerzeichen zum Abgleich |
-| `.github/workflows/release.yml` | baut bei jedem Versions-Tag das Skill-ZIP und hängt es an das Release |
+| `.github/workflows/release.yml` | baut beim Veröffentlichen eines Releases das Skill-ZIP und hängt es an |
 
 ## Testen
 
@@ -78,12 +78,11 @@ Alle Daten in den Beispielen sind fiktiv.
 
 ## Neue Version veröffentlichen
 
-```bash
-git tag v1.0.0
-git push origin v1.0.0
-```
+1. Auf GitHub **Releases › Draft a new release** öffnen.
+2. Einen neuen Tag anlegen (z. B. `v1.0.1`), Titel und Text aus `CHANGELOG.md` übernehmen.
+3. **Publish release** klicken.
 
-Der Workflow packt `skill/sap-erechnung-pdfmailer/` als ZIP und legt ein Release mit der Datei an.
+Der Workflow packt dann `skill/sap-erechnung-pdfmailer/` als ZIP und hängt es zusammen mit der Anleitung an das Release.
 
 ## Lizenz
 
